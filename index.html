@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HakimeRad Teleradiology Consultancy - AI-Enabled Teleradiology Solutions</title>
+  <meta name="description"
+    content="HakimeRad offers secure, AI-supported teleradiology services to bridge diagnostic gaps in Ethiopia's healthcare system, providing timely radiologic interpretations.">
+  <meta name="keywords"
+    content="teleradiology Ethiopia, AI radiology, diagnostic imaging, radiologist shortage, HakimeRad consultancy">
+  <meta name="author" content="HakimeRAD">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.hakimerad.healthcare.et/">
+  <meta property="og:title" content="HakimeRAD - AI-Powered Teleradiology Platform">
+  <meta property="og:description"
+    content="AI-powered teleradiology solutions to bridge the radiologist gap in Ethiopia. Fast, accurate, and available 24/7.">
+  <meta property="og:image" content="images/HakimeRAD-og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.hakimerad.healthcare.et/">
+  <meta property="twitter:title" content="HakimeRAD - AI-Powered Teleradiology Platform">
+  <meta property="twitter:description"
+    content="AI-powered teleradiology solutions to bridge the radiologist gap in Ethiopia. Fast, accurate, and available 24/7">
+  <meta property="twitter:image" content="images/HakimeRAD-og-image.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.hakimerad.healthcare.et/" />
+
+  <!-- Schema.org markup for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "HakimeRAD",
+    "url": "https://www.hakimerad.healthcare.et",
+    "logo": "https://www.hakimerad.healthcare.et/images/logo.png",
+    "description": "A modern comprehensive cloud-native healthcare platform that integrates EMR, PACS, RIS, Telemedicine, and AI-assisted radiology workflow solutions for the Ethiopian healthcare market.",
+    "foundingDate": "2025",
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Dawit Muluneh"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Addis Ababa",
+      "addressCountry": "Ethiopia"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+251906373154",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Amharic"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/HakimeRAD",
+      "https://x.com/HakimeRAD",
+      "https://www.linkedin.com/company/HakimeRAD",
+      "https://www.instagram.com/HakimeRAD",
+      "https://t.me/HakimeRAD",
+      "https://www.tiktok.com/@HakimeRAD"
+    ]
+  }
+  </script>
+
+  <!-- Preconnect to external resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Fonts: Poppins for headings, Roboto for body -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Critical CSS -->
+  <style>
+    /* Critical above-the-fold styles for faster rendering */
+    :root {
+      --primary-color: #4a6bff;
+      --secondary-color: #ff6b6b;
+      --dark-color: #333333;
+      --light-color: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--dark-color);
+      background-color: var(--light-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    /* Accessibility improvements */
+    :focus {
+      outline: 3px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-color);
+      color: white;
+      padding: 8px;
+      z-index: 9999;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header role="banner" class="header">
+    <div class="container">
+      <div class="logo">
+        <h1>
+          <a href="index.html" class="logo-link">
+            <img src="images/favicon web/apple-icon-1024x1024.png" srcset="images/favicon web/android-icon-256x256.png 256w,
+                         images/favicon web/android-icon-512x512.png 512w,
+                         images/favicon web/apple-icon-1024x1024.png 1024w" sizes="(max-width: 768px) 256px,
+                        (max-width: 1024px) 512px,
+                        1024px" alt="HakimeRAD logogram" class="logo-icon" />
+            <span class="logo-blue">Hakim</span><span class="logo-orange">eRAD</span>
+          </a>
+        </h1>
+      </div>
+      <div class="theme-switcher">
+        <div class="theme-switch-wrapper">
+          <i class="fas fa-sun"></i>
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" aria-label="Toggle dark mode" />
+            <div class="slider-theme round"></div>
+          </label>
+          <i class="fas fa-moon"></i>
+        </div>
+      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul id="nav-menu" role="menubar">
+          <li role="none"><a href="index.html" class="active" aria-current="page" role="menuitem">Home</a></li>
+          <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+          <li role="none"><a href="pricing.html" role="menuitem">Pricing</a></li>
+          <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+          <li role="none"><a href="about.html" role="menuitem">About</a></li>
+          <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu-btn">
+        <button aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="nav-menu">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="video-background" aria-hidden="true">
+        <video autoplay muted loop playsinline id="hero-video" poster="images/hero-fallback.jpg" aria-hidden="true">
+          <source src="vidios/video5866001985676778378.mp4" type="video/mp4">
+          <!-- Fallback for browsers that don't support video -->
+          <img src="images/hero-fallback.jpg" alt="Abstract medical background" loading="lazy">
+        </video>
+        <div class="overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 id="hero-heading">Bridging Diagnostic Gaps in Ethiopia's Healthcare</h1>
+          <p>HakimeRad delivers secure, AI-supported teleradiology services to provide timely and accurate radiologic
+            interpretations, connecting healthcare institutions with certified radiologists across Ethiopia and beyond.
+          </p>
+          <div class="cta-buttons" role="group" aria-label="Call to action buttons">
+            <a href="services.html" class="btn btn-primary">Explore Our Services</a>
+            <a href="contact.html" class="btn btn-secondary">Request a Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Our Value Proposition</h2>
+        <p class="section-subtitle">Secure, AI-enhanced teleradiology solutions for reliable and accessible healthcare
+          in Ethiopia.</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Timely & Accurate Reporting</h3>
+            <p>Guaranteed reduction in turnaround time with AI-assisted triage, supporting X-ray, CT, MRI, Ultrasound,
+              and more for diverse healthcare needs.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-cloud"></i>
+            <h3>Cloud-Enabled Platform</h3>
+            <p>Secure, cloud-based PACS/RIS with AES-256 encryption, DICOM & HL7 compliance, and bilingual reporting in
+              Amharic & English.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>24/7 Access & Availability</h3>
+            <p>On-demand interpretation services ensuring continuous diagnostic support for public hospitals, private
+              clinics, and rural zones.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-user-md"></i>
+            <h3>Subspecialty Expertise</h3>
+            <p>Access to certified radiologists for routine and subspecialty consultations, including neuroradiology,
+              pediatric, and emergency cases.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-labelledby="stats-heading">
+      <div class="container">
+        <h2 id="stats-heading" class="section-title">Trusted by Healthcare Leaders</h2>
+        <p class="section-subtitle">Our platform is already making an impact across the Ethiopian healthcare landscape.
+        </p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <i class="fas fa-hospital" aria-hidden="true"></i>
+            <div class="stat-number">5+</div>
+            <p class="stat-label">Partner Hospitals & Clinics</p>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
+            <div class="stat-number">65%</div>
+            <p class="stat-label">Reduction in Report TAT</p>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-globe-africa" aria-hidden="true"></i>
+            <div class="stat-number">2%</div>
+            <p class="stat-label">Nationwide Coverage</p>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-user-clock" aria-hidden="true"></i>
+            <div class="stat-number">24/7/365</div>
+            <p class="stat-label">Service Availability</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Our Partners Say</h2>
+        <div class="testimonials-slider">
+          <div class="testimonial">
+            <p class="quote">"HakimeRAD's AI-powered platform reduced our radiology report turnaround time by 70%,
+              allowing us to provide faster care to critical patients."</p>
+            <div class="client-info">
+              <h4>Dr. Kalkidan Zenebe</h4>
+              <p>Emergency and Critical Care Specialist, Addis Ababa City Administration Health Bureau</p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">"The cloud-native PACS has transformed our workflow. Our radiologists can now interpret
+              studies from anywhere, improving our operational efficiency."</p>
+            <div class="client-info">
+              <h4>Dr. Merid Lemma Kebede</h4>
+              <p>Head of Radiology, Jimma University Medical Center</p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">"Implementing HakimeRAD's teleradiology service allowed our rural clinic to provide
+              specialized care without patient transfers. A game-changer for our community."</p>
+            <div class="client-info">
+              <h4>Professor Netsanet Workneh</h4>
+              <p>Oromia Health Bureau Head</p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">"HakimeRAD's AI-powered platform allowed us to reach the remote and rural communities
+              expanding our Diagnostic service delivery."</p>
+            <div class="client-info">
+              <h4>Nesredin Ishak Beshir</h4>
+              <p>Senior Public Health Specialist (General Manager and Founder), SINA GRAND HOSPITAL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter" aria-labelledby="newsletter-heading">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2 id="newsletter-heading" class="section-title">Stay Ahead in Health-Tech</h2>
+          <p class="section-subtitle">Subscribe to our newsletter for the latest industry insights, company updates, and
+            case studies on digital health innovation in Ethiopia.</p>
+          <form class="newsletter-form" action="#" method="post">
+            <label for="newsletter-email" class="sr-only">Email Address</label>
+            <input type="email" id="newsletter-email" placeholder="Enter your email address..." required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-heading">
+      <div class="container">
+        <h2 id="cta-heading">Ready to Transform Your Radiology Services?</h2>
+        <p>Experience the benefits of our AI-powered healthcare platform with no long-term commitments or subscription
+          fees.</p>
+        <div class="cta-buttons" role="group" aria-label="Call to action options">
+          <a href="contact.html" class="btn btn-primary"
+            aria-label="Schedule a demonstration of our teleradiology platform">Schedule a Demo</a>
+          <a href="services.html" class="btn btn-outline" aria-label="Learn more about our healthcare services">Learn
+            More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo" aria-labelledby="footer-heading">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3 id="footer-heading">HakimeRAD</h3>
+          <p>Revolutionizing radiology in Ethiopia since 2025.</p>
+        </div>
+        <div class="footer-links">
+          <h4 id="quick-links-heading">Quick Links</h4>
+          <nav aria-labelledby="quick-links-heading">
+            <ul>
+              <li><a href="index.html" aria-current="page">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer-contact">
+          <h4 id="contact-info-heading">Contact Us</h4>
+          <ul aria-labelledby="contact-info-heading" class="contact-list">
+            <li><i class="fas fa-globe" aria-hidden="true"></i> <a href="https://www.hakimerad.healthcare.et" target="_blank" rel="noopener noreferrer">www.hakimerad.healthcare.et</a></li>
+            <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hakimerad.healthcare.et">info@hakimerad.healthcare.et</a></li>
+            <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:support@hakimerad.healthcare.et">support@hakimerad.healthcare.et</a></li>
+            <li><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+251906373154">+251906373154</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4 id="social-heading">Follow Us</h4>
+          <div class="social-icons" aria-labelledby="social-heading">
+            <a href="https://www.facebook.com/HakimeRAD" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="social-icon"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://t.me/HakimeRAD" target="_blank" rel="noopener noreferrer" aria-label="Join us on Telegram" class="social-icon"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+            <a href="https://x.com/HakimeRAD" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X" class="social-icon"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/HakimeRAD" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="social-icon"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/company/HakimeRAD" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn" class="social-icon"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="https://wa.me/251906373154" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" class="social-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@HakimeRAD" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok" class="social-icon"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 HakimeRAD. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <!-- Accessibility enhancement script -->
+  <script>
+    // Add ARIA attributes dynamically
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add focus states for keyboard navigation
+      const focusableElements = document.querySelectorAll('a, button, input, select, textarea');
+      focusableElements.forEach(el => {
+        el.addEventListener('focus', function () {
+          this.classList.add('keyboard-focus');
+        });
+        el.addEventListener('blur', function () {
+          this.classList.remove('keyboard-focus');
+        });
+      });
+
+      // Handle mobile menu accessibility
+      const menuButton = document.querySelector('.mobile-menu-btn button');
+      if (menuButton) {
+        menuButton.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+          this.setAttribute('aria-expanded', !expanded);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
