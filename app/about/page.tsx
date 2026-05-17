@@ -23,7 +23,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About us"
-        title="Built by clinicians. Engineered for Ethiopia."
+        title="Built by Radiologist and Clinical experts. Engineered for Ethiopia."
         description="HakimeRAD was founded to close Ethiopia's diagnostic-imaging gap — bringing expert radiology to every patient, regardless of where they live."
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
