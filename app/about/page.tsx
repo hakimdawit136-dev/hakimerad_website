@@ -50,7 +50,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Today, HakimeRAD pairs an AI-augmented worklist with a network
-                of board-certified radiologists, delivered through a cloud-native
+                of board-certified diaspora specialist and sub-specialist radiologists, delivered through a cloud-native
                 PACS that works for an academic hospital in Addis Ababa and a
                 rural clinic in Jigjiga alike.
               </p>
