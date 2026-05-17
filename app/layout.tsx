@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — AI-Enabled Teleradiology for Ethiopia`,
+    title: `${siteConfig.name} — HakimeRAD-AI-integrated Teleradiology for Ethiopia`,
     description: siteConfig.description,
     images: [
       {
