@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — AI-Enabled Teleradiology for Ethiopia`,
+    title: `${siteConfig.name} — AI-integrated Teleradiology for Ethiopia`,
     description: siteConfig.description,
     images: ["/videos/hero-poster.jpg"],
   },
