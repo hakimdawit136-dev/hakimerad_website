@@ -35,7 +35,7 @@ export default function AboutPage() {
               Our story
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold text-ink-900 sm:text-4xl">
-              From a clinical gap to a national platform.
+              From a clinical service delivery gap to a national diagnostic radiology service delivery platform.
             </h2>
             <div className="mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink-600">
               <p>
