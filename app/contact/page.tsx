@@ -152,7 +152,7 @@ export default function ContactPage() {
             Headquartered in Addis Ababa. Our overall operations coordination and control, AI research & platform development and integration. on the ground across Ethiopia.
           </h2>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-600">
-            Regional hubs in Dire Dawa, Harar, Jigjiga, Jimma, Hawassa, and Adama — with cloud-native reach to every connected clinic in the country.
+            Regional hubs for Telemedicine & Teleradiology  in Dire Dawa, Harar, Jigjiga, Jimma, Hawassa, and Adama — with cloud-native reach to every connected clinic in the country.
           </p>
         </Reveal>
         <div className="mt-8">
