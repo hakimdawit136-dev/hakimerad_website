@@ -9,7 +9,7 @@ export function Benefits() {
       <SectionHeading
         eyebrow="Why HakimeRAD"
         title="A teleradiology platform built for Ethiopia."
-        description="Calibrated for clinical reality: intermittent connectivity, bilingual reporting, and the radiologist shortage at the core of the country's diagnostic gap."
+        description="Calibrated for clinical reality: intermittent connectivity, and the radiologist shortage at the core of the country's diagnostic service delivery gap."
       />
       <Stagger className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
         {homeBenefits.map((b) => {
