@@ -14,7 +14,7 @@ import { aboutValues, certifications, team } from "@/lib/content/team";
 export const metadata: Metadata = {
   title: "About HakimeRAD",
   description:
-    "Founded by Dr. Dawit Muluneh, HakimeRAD is on a mission to make expert diagnostic imaging accessible to every Ethiopian patient.",
+    "Founded by Dr. Dawit Muluneh, HakimeRAD is on a mission to make expert diagnostic imaging service accessible to every client in Ethiopian and beyond.",
   alternates: { canonical: "/about" },
 };
 
