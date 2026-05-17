@@ -14,6 +14,10 @@ import { siteConfig } from "@/lib/site";
 
 type Params = Promise<{ slug: string }>;
 
+// Restrict dynamic rendering to the known service slugs so unknown slugs
+// return a real 404 instead of a soft-404 (the not-found UI with a 200 status).
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
