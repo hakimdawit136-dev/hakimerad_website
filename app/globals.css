@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Brand palette — anchored to the wordmark colors:
+     "Hakim" = deep blue #00529B, "eRAD" = vibrant orange #FF9900. */
+  --color-brand-blue-50: #ecf4fb;
+  --color-brand-blue-100: #d5e6f5;
+  --color-brand-blue-200: #a9cde9;
+  --color-brand-blue-300: #74acd8;
+  --color-brand-blue-400: #3f8bc4;
+  --color-brand-blue-500: #1d70b1;
+  --color-brand-blue-600: #0c5fa1;
+  --color-brand-blue-700: #00529b;
+  --color-brand-blue-800: #03457f;
+  --color-brand-blue-900: #053861;
+
+  --color-brand-orange-50: #fff6e6;
+  --color-brand-orange-100: #ffe5b8;
+  --color-brand-orange-200: #ffd083;
+  --color-brand-orange-300: #ffbb52;
+  --color-brand-orange-400: #ffa829;
+  --color-brand-orange-500: #ff9900;
+  --color-brand-orange-600: #e68900;
+  --color-brand-orange-700: #b86d00;
+  --color-brand-orange-800: #8a5200;
+  --color-brand-orange-900: #5c3700;
+
+  --color-brand-teal-50: #ecfdf5;
+  --color-brand-teal-100: #d1fae5;
+  --color-brand-teal-500: #14b8a6;
+  --color-brand-teal-600: #0f9e8e;
+  --color-brand-teal-700: #0d7d72;
+
+  --color-ink-50: #f8fafc;
+  --color-ink-100: #f1f5f9;
+  --color-ink-200: #e2e8f0;
+  --color-ink-300: #cbd5e1;
+  --color-ink-400: #94a3b8;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1e293b;
+  --color-ink-900: #0f172a;
+
+  --font-display: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+
+  --shadow-soft: 0 10px 40px -12px rgb(0 82 155 / 0.18);
+  --shadow-glow: 0 8px 28px -8px rgb(255 153 0 / 0.45);
+
+  --animate-fade-up: fade-up 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 500ms ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-ink-800 antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--color-brand-blue-700);
+    color: white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    @apply text-ink-900 tracking-tight;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-blue-700);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-brand-blue-700 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-soft;
+  }
+
+  .gradient-mesh {
+    background-image:
+      radial-gradient(at 0% 0%, color-mix(in oklab, var(--color-brand-blue-100) 70%, transparent) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, color-mix(in oklab, var(--color-brand-orange-100) 50%, transparent) 0px, transparent 45%),
+      radial-gradient(at 50% 100%, color-mix(in oklab, var(--color-brand-teal-50) 80%, transparent) 0px, transparent 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
