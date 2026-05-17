@@ -51,7 +51,7 @@ export default function AboutPage() {
               <p>
                 Today, HakimeRAD pairs an AI-augmented worklist with a network
                 of board-certified diaspora specialist and sub-specialist radiologists, delivered through a cloud-native
-                PACS that works for an academic hospital in Addis Ababa and a
+                PACS that works from the largest an academic institution in Addis Ababa to the 
                 rural clinic in Jigjiga alike.
               </p>
             </div>
