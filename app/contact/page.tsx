@@ -149,7 +149,7 @@ export default function ContactPage() {
             Where we operate
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold text-ink-900 sm:text-4xl">
-            Headquartered in Addis Ababa. On the ground across Ethiopia.
+            Headquartered in Addis Ababa. Our overall operations coordination and control, AI research & platform development and integration. on the ground across Ethiopia.
           </h2>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-600">
             Regional hubs in Dire Dawa, Harar, Jigjiga, Jimma, Hawassa, and Adama — with cloud-native reach to every connected clinic in the country.
