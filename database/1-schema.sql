@@ -1,0 +1,58 @@
+CREATE TABLE IF NOT EXISTS users (
+  id VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255) UNIQUE,
+  emailVerified TIMESTAMP,
+  image VARCHAR(255),
+  password VARCHAR(255),
+  role ENUM('USER', 'ADMIN') DEFAULT 'USER',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS accounts (
+  id VARCHAR(255) PRIMARY KEY,
+  userId VARCHAR(255) NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  provider VARCHAR(255) NOT NULL,
+  providerAccountId VARCHAR(255) NOT NULL,
+  refresh_token TEXT,
+  access_token TEXT,
+  expires_at INT,
+  token_type VARCHAR(255),
+  scope VARCHAR(255),
+  id_token TEXT,
+  session_state VARCHAR(255),
+  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS sessions (
+  id VARCHAR(255) PRIMARY KEY,
+  sessionToken VARCHAR(255) UNIQUE NOT NULL,
+  userId VARCHAR(255) NOT NULL,
+  expires TIMESTAMP NOT NULL,
+  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS verification_tokens (
+  identifier VARCHAR(255) NOT NULL,
+  token VARCHAR(255) UNIQUE NOT NULL,
+  expires TIMESTAMP NOT NULL,
+  PRIMARY KEY (identifier, token)
+);
+
+CREATE TABLE IF NOT EXISTS blog_posts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(255) UNIQUE NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  excerpt TEXT,
+  category VARCHAR(255),
+  author VARCHAR(255),
+  date DATE,
+  reading_minutes INT,
+  image VARCHAR(255),
+  image_alt VARCHAR(255),
+  content LONGTEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

@@ -25,6 +25,7 @@ export const team: TeamMember[] = [
     image: "/photos/coo.png",
   },
 ];
+// TODO: leadership photos - keep the current for the timebeing I will provide the real photo later (pending issue)
 
 export const certifications: { name: string; description: string }[] = [
   {

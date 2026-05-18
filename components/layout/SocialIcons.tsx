@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, MessageCircle, Send } from "lucide-react";
+import { Camera, BriefcaseBusiness, MessageCircle, Send } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 
 type Social = {
@@ -34,10 +34,10 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 const socials: Social[] = [
-  { href: siteConfig.social.facebook, label: "Facebook", icon: Facebook },
+  { href: siteConfig.social.facebook, label: "Facebook", icon: MessageCircle },
   { href: siteConfig.social.x, label: "X (Twitter)", icon: XIcon },
-  { href: siteConfig.social.linkedin, label: "LinkedIn", icon: Linkedin },
-  { href: siteConfig.social.instagram, label: "Instagram", icon: Instagram },
+  { href: siteConfig.social.linkedin, label: "LinkedIn", icon: BriefcaseBusiness },
+  { href: siteConfig.social.instagram, label: "Instagram", icon: Camera },
   { href: siteConfig.social.telegram, label: "Telegram", icon: Send },
   { href: siteConfig.social.tiktok, label: "TikTok", icon: TikTokIcon },
   { href: siteConfig.social.whatsapp, label: "WhatsApp", icon: MessageCircle },

@@ -43,6 +43,7 @@ export function ContactForm() {
       inquiryType: planFromQuery(planParam),
       message: planParam ? `I'm interested in the ${planParam} plan. ` : "",
       website: "",
+      registerAccount: false,
     }),
     [planParam],
   );
@@ -274,6 +275,19 @@ export function ContactForm() {
           </a>
           .
         </p>
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            id="registerAccount"
+            {...register("registerAccount")}
+            className="rounded border-ink-300 text-brand-blue-600 focus:ring-brand-blue-500"
+          />
+          <label htmlFor="registerAccount" className="text-sm text-ink-700 font-medium">
+            Register for an account / Subscribe
+          </label>
+        </div>
+      </div>
+      <div className="flex justify-end mt-4">
         <Button type="submit" size="lg" disabled={submitting}>
           {submitting ? (
             <>

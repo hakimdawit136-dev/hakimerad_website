@@ -3,6 +3,8 @@
 import { Resend } from "resend";
 import { contactSchema, type ContactFormValues } from "@/lib/contact-schema";
 import { siteConfig } from "@/lib/site";
+import bcrypt from "bcryptjs";
+import { query } from "@/lib/db";
 
 export type ContactActionResult =
   | { ok: true; channel: "resend" | "mailto" }
@@ -60,12 +62,32 @@ export async function submitContactForm(
     `${siteConfig.name} <onboarding@resend.dev>`;
 
   if (!apiKey) {
-    // Falls back to mailto: on the client when the API key isn't configured.
     return {
       ok: false,
       error:
         "Email delivery is not configured on the server yet. The form has been switched to your email client so you can send the message directly.",
     };
+  }
+
+  // Handle registerAccount
+  if (data.registerAccount) {
+    try {
+      const existingUsers = await query('SELECT id FROM users WHERE email = ?', [data.email]) as any[];
+      if (existingUsers.length === 0) {
+        // Auto-generate a password and hash it
+        const generatedPassword = Math.random().toString(36).slice(-10) + "A1!";
+        const hashedPassword = await bcrypt.hash(generatedPassword, 10);
+        const userId = crypto.randomUUID();
+        await query(
+          'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)',
+          [userId, data.name, data.email, hashedPassword]
+        );
+        // Note: In a real app, we would email the user their auto-generated password or send a magic link.
+        // For now, we will just proceed with contact form email delivery.
+      }
+    } catch (dbError) {
+      console.error("Account registration failed", dbError);
+    }
   }
 
   try {

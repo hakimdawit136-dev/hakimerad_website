@@ -50,7 +50,7 @@ static HTML site.
 
 ## Getting started
 
-Requires Node.js 20+.
+Requires Node.js 20+ and Docker (for local database).
 
 ```bash
 # install
@@ -58,6 +58,9 @@ npm install
 
 # copy env template
 cp .env.example .env.local
+
+# start local MySQL database with Docker
+docker-compose up -d
 
 # start dev server (Turbopack)
 npm run dev
@@ -84,6 +87,8 @@ See [`.env.example`](./.env.example).
 | `RESEND_API_KEY` | optional | If set, the contact form sends via Resend. If unset, the form returns an error and points the user at a `mailto:` fallback. |
 | `CONTACT_TO_EMAIL` | optional | Inbox that receives contact-form submissions. Defaults to `info@hakimerad.health.et`. |
 | `RESEND_FROM_EMAIL` | optional | "From" address Resend uses. Must be a verified sender in your Resend project. |
+| `NEXTAUTH_SECRET` | yes | Secret used for NextAuth.js tokens. |
+| `MYSQL_*` | yes | MySQL connection parameters. |
 
 ## Project layout
 
@@ -116,13 +121,25 @@ Available as Tailwind utilities: `bg-brand-blue-700`, `text-brand-orange-500`, e
 
 Social media URLs live in [`lib/site.ts`](./lib/site.ts). Update them once when the real handles are ready — every link in the codebase reads from that file.
 
-## Deployment
+## Database & Admin Panel
 
-Designed for **Vercel** zero-config:
+The site uses a MySQL database to manage authentication and dynamic blog posts.
+The initial schema and seed scripts are located in `database/`. When `docker-compose up -d` is run for the first time, it automatically creates the tables and seeds existing static blog posts.
 
-1. Connect this repo on Vercel.
-2. Set `NEXT_PUBLIC_SITE_URL`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `RESEND_FROM_EMAIL`.
-3. Push to `main` — Vercel builds with `npm run build` and deploys.
+To manage blog content:
+1. Register a new account via `/register` (if no admin exists).
+2. For testing/demo, manually set the role to `ADMIN` in the database.
+3. Access `/admin` to use the Dashboard and Blog Management tools.
+
+## Deployment on Plesk
+
+Designed to run natively on any Plesk control panel using the Node.js extension.
+
+1. Configure environment variables in Plesk (`.env`).
+2. Run `npm install` and `npm run build`.
+3. Set the Document Root to the generated output directory (using `output: "standalone"` inside `next.config.ts`, the root is `.next/standalone`).
+4. Ensure the `public` and `.next/static` directories are correctly copied or accessible for static assets.
+5. Setup the production MySQL database in Plesk, update the `MYSQL_*` environment variables to point to it, and manually import `database/1-schema.sql` and `database/2-seed.sql` to initialize it.
 
 The legacy static site under `legacy/` is not served and exists only as a content reference.
 

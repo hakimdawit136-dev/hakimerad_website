@@ -8,7 +8,7 @@ import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { FinalCta } from "@/components/home/FinalCta";
 import { BreadcrumbsJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
-import { blogPosts } from "@/lib/content/blog";
+import { query } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Blog & insights",
@@ -23,7 +23,9 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
 });
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await query('SELECT * FROM blog_posts ORDER BY date DESC') as any[];
+
   return (
     <>
       <PageHero
@@ -42,8 +44,8 @@ export default function BlogPage() {
             >
               <Link href={`/blog/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-ink-100">
                 <Image
-                  src={post.image}
-                  alt={post.imageAlt}
+                  src={post.image || "/images/blog/default.jpg"}
+                  alt={post.image_alt || post.title}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -64,7 +66,7 @@ export default function BlogPage() {
                     <User className="size-3.5" aria-hidden />
                     {post.author}
                   </span>
-                  <span>{post.readingMinutes} min read</span>
+                  <span>{post.reading_minutes} min read</span>
                 </div>
                 <h2 className="mt-3 font-display text-lg font-semibold leading-snug text-ink-900">
                   <Link

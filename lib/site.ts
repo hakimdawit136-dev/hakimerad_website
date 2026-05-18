@@ -26,7 +26,7 @@ export const siteConfig = {
       regionalHubs: ["Dire Dawa", "Harar", "Jigjiga", "Jimma", "Hawassa", "Adama"],
     },
   },
-  // Replace these placeholders with the real account URLs when ready.
+  // TODO: Replace these placeholders with the real account URLs when ready. (pending issue)
   social: {
     facebook: "https://www.facebook.com/HakimeRAD",
     x: "https://x.com/HakimeRAD",

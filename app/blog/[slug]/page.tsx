@@ -7,17 +7,18 @@ import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { FinalCta } from "@/components/home/FinalCta";
 import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
-import { blogPosts, getPostBySlug } from "@/lib/content/blog";
 import { siteConfig } from "@/lib/site";
+import { query } from "@/lib/db";
 
 type Params = Promise<{ slug: string }>;
 
 // Restrict dynamic rendering to the known blog slugs so unknown slugs return
 // a real 404 instead of a soft-404 (the not-found UI with a 200 status).
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+// Remove static params for database-driven blog
+export async function generateStaticParams() {
+  return [];
 }
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -26,13 +27,16 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
 });
 
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const posts = await query('SELECT * FROM blog_posts WHERE slug = ?', [slug]) as any[];
+  const post = posts[0];
   if (!post) return { title: "Article" };
   return {
     title: post.title,
@@ -42,7 +46,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       type: "article",
-      images: [{ url: post.image, alt: post.imageAlt }],
+      images: [{ url: post.image || "/images/blog/default.jpg", alt: post.image_alt || post.title }],
       publishedTime: post.date,
       authors: [post.author],
     },
@@ -51,7 +55,8 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const posts = await query('SELECT * FROM blog_posts WHERE slug = ?', [slug]) as any[];
+  const post = posts[0];
   if (!post) notFound();
 
   const articleStructuredData = {
@@ -107,7 +112,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               </span>
               <span className="inline-flex items-center gap-2">
                 <Clock className="size-4" aria-hidden />
-                {post.readingMinutes} min read
+                {post.reading_minutes} min read
               </span>
             </div>
           </div>
@@ -116,8 +121,8 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="relative -mt-10 aspect-[16/9] overflow-hidden rounded-3xl border border-ink-200 bg-ink-100 shadow-soft">
             <Image
-              src={post.image}
-              alt={post.imageAlt}
+              src={post.image || "/images/blog/default.jpg"}
+              alt={post.image_alt || post.title}
               fill
               priority
               sizes="(min-width: 1024px) 768px, 100vw"
@@ -128,9 +133,9 @@ export default async function BlogPostPage({ params }: { params: Params }) {
 
         <Section>
           <div className="prose prose-lg mx-auto max-w-3xl prose-headings:font-display prose-a:text-brand-blue-700 prose-strong:text-ink-900">
-            {post.body.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
+            {post.content ? (
+              <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br>") }} />
+            ) : null}
           </div>
         </Section>
       </article>

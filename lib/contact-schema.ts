@@ -28,6 +28,7 @@ export const contactSchema = z.object({
     .max(2000, "Please keep messages under 2000 characters."),
   // Honeypot — must remain empty.
   website: z.string().max(0).optional().or(z.literal("")),
+  registerAccount: z.boolean().optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;

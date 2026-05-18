@@ -32,8 +32,8 @@ yarn-error.log*
 .env*
 !.env.example
 
-# vercel
-.vercel
+# docker data
+mysql_data/
 
 # typescript
 *.tsbuildinfo
