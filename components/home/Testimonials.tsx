@@ -12,16 +12,21 @@ const ROTATE_MS = 7000;
 
 export function Testimonials() {
   const reduce = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
   const [index, setIndex] = React.useState(0);
   const [paused, setPaused] = React.useState(false);
 
   React.useEffect(() => {
-    if (reduce || paused) return;
+    setMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (reduce || paused || !mounted) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % testimonials.length);
     }, ROTATE_MS);
     return () => window.clearInterval(id);
-  }, [reduce, paused]);
+  }, [reduce, paused, mounted]);
 
   const go = React.useCallback((dir: 1 | -1) => {
     setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
@@ -55,11 +60,12 @@ export function Testimonials() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.blockquote
                 key={current.name}
-                initial={reduce ? undefined : { opacity: 0, y: 8 }}
-                animate={reduce ? undefined : { opacity: 1, y: 0 }}
-                exit={reduce ? undefined : { opacity: 0, y: -8 }}
+                initial={false}
+                animate={mounted && !reduce ? { opacity: 1, y: 0 } : undefined}
+                exit={mounted && !reduce ? { opacity: 0, y: -8 } : undefined}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="space-y-6"
+                suppressHydrationWarning
               >
                 <p className="text-balance text-lg leading-relaxed text-ink-800 sm:text-xl">
                   &ldquo;{current.quote}&rdquo;

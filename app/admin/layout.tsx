@@ -2,6 +2,7 @@ import { auth, signOut } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { query } from "@/lib/db";
 
 export default async function AdminLayout({
   children,
@@ -12,6 +13,22 @@ export default async function AdminLayout({
 
   if (!session) {
     redirect("/login");
+  }
+
+  // Fetch pending case count for notification badge
+  let pendingCount = 0;
+  try {
+    const userResult = await query('SELECT role FROM users WHERE id = ?', [session.user.id]) as any[];
+    const user = userResult[0];
+    
+    if (user && (user.role === 'ADMIN' || user.role === 'RADIOLOGIST')) {
+      const pendingResult = await query(
+        `SELECT COUNT(*) as count FROM medical_cases WHERE status = 'SUBMITTED'`
+      ) as any[];
+      pendingCount = pendingResult[0].count;
+    }
+  } catch (error) {
+    console.error("Error fetching pending count:", error);
   }
 
   return (
@@ -26,6 +43,14 @@ export default async function AdminLayout({
           </Link>
           <Link href="/admin/blog" className="block px-4 py-2 rounded-md text-slate-600 hover:bg-slate-50 font-medium">
             Blog Posts
+          </Link>
+          <Link href="/admin/cases" className="block px-4 py-2 rounded-md text-slate-600 hover:bg-slate-50 font-medium relative">
+            Medical Cases
+            {pendingCount > 0 && (
+              <span className="absolute top-2 right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {pendingCount}
+              </span>
+            )}
           </Link>
         </nav>
       </aside>

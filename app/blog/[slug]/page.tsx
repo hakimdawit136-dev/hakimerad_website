@@ -27,8 +27,6 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
 });
 
-}
-
 export async function generateMetadata({
   params,
 }: {

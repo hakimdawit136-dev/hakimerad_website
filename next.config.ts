@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [],
   },
   poweredByHeader: false,
+  allowedDevOrigins: ["127.0.0.1"],
   async headers() {
     return [
       {

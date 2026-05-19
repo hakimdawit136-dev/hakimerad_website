@@ -15,12 +15,19 @@ export function Reveal({
   ...props
 }: RevealProps) {
   const reduce = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <motion.div
-      initial={reduce ? undefined : { opacity: 0, y }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      initial={false}
+      whileInView={mounted && !reduce ? { opacity: 1, y: 0 } : undefined}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      suppressHydrationWarning
       {...props}
     >
       {children}
@@ -38,7 +45,13 @@ export function Stagger({
   ...props
 }: StaggerProps) {
   const reduce = useReducedMotion();
-  if (reduce) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || reduce) {
     return (
       <div {...(props as React.HTMLAttributes<HTMLDivElement>)}>
         {children as React.ReactNode}
@@ -54,6 +67,7 @@ export function Stagger({
         hidden: {},
         show: { transition: { staggerChildren: stagger } },
       }}
+      suppressHydrationWarning
       {...props}
     >
       {children}
@@ -67,7 +81,13 @@ export function StaggerItem({
   ...props
 }: HTMLMotionProps<"div"> & { y?: number }) {
   const reduce = useReducedMotion();
-  if (reduce) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || reduce) {
     return (
       <div {...(props as React.HTMLAttributes<HTMLDivElement>)}>
         {children as React.ReactNode}
@@ -80,6 +100,7 @@ export function StaggerItem({
         hidden: { opacity: 0, y },
         show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
       }}
+      suppressHydrationWarning
       {...props}
     >
       {children}

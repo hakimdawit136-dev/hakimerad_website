@@ -8,11 +8,16 @@ import { Container } from "@/components/ui/Container";
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Defer playback until first idle so the LCP frame is the poster, not the decoded video.
   React.useEffect(() => {
-    if (reduce) return;
+    if (reduce || !mounted) return;
     const video = videoRef.current;
     if (!video) return;
     const start = () => {
@@ -28,7 +33,7 @@ export function Hero() {
     } else {
       window.setTimeout(start, 300);
     }
-  }, [reduce]);
+  }, [reduce, mounted]);
 
   return (
     <section
@@ -66,9 +71,10 @@ export function Hero() {
       <Container className="relative grid min-h-[88vh] place-items-center py-24 sm:min-h-[92vh] sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <motion.span
-            initial={reduce ? undefined : { opacity: 0, y: 10 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
+            initial={false}
+            animate={mounted && !reduce ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            suppressHydrationWarning
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur"
           >
             <span className="size-1.5 rounded-full bg-brand-orange-400" aria-hidden />
@@ -77,9 +83,10 @@ export function Hero() {
 
           <motion.h1
             id="hero-heading"
-            initial={reduce ? undefined : { opacity: 0, y: 16 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
+            initial={false}
+            animate={mounted && !reduce ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            suppressHydrationWarning
             className="mt-5 text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
           >
             Bridging Ethiopia&rsquo;s diagnostic gap with{" "}
@@ -90,9 +97,10 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={reduce ? undefined : { opacity: 0, y: 12 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
+            initial={false}
+            animate={mounted && !reduce ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            suppressHydrationWarning
             className="mt-6 text-pretty text-base text-white/85 sm:text-lg"
           >
             Secure, cloud-native PACS / RIS and a 24/7 radiologist network deliver
@@ -101,9 +109,10 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={reduce ? undefined : { opacity: 0, y: 10 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
+            initial={false}
+            animate={mounted && !reduce ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            suppressHydrationWarning
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Button href="/contact" size="lg">
@@ -117,9 +126,10 @@ export function Hero() {
           </motion.div>
 
           <motion.dl
-            initial={reduce ? undefined : { opacity: 0 }}
-            animate={reduce ? undefined : { opacity: 1 }}
+            initial={false}
+            animate={mounted && !reduce ? { opacity: 1 } : undefined}
             transition={{ duration: 0.6, delay: 0.45 }}
+            suppressHydrationWarning
             className="mt-14 grid grid-cols-3 gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-left backdrop-blur sm:gap-6 sm:p-6"
           >
             <HeroStat value="<30m" label="STAT turnaround" />

@@ -28,8 +28,18 @@ export default function LoginPage() {
       if (res?.error) {
         setError("Invalid email or password");
       } else {
-        router.push("/admin");
-        router.refresh();
+        // Fetch user role to determine redirect
+        const userRes = await fetch("/api/auth/user-role");
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          const redirectPath = userData.role === 'ADMIN' || userData.role === 'RADIOLOGIST' ? '/admin' : '/portal';
+          router.push(redirectPath);
+          router.refresh();
+        } else {
+          // Fallback to portal if role check fails
+          router.push("/portal");
+          router.refresh();
+        }
       }
     } catch (err) {
       setError("An unexpected error occurred");
